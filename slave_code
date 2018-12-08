@@ -6,8 +6,7 @@ int x = 0;
 void setup() {
   
   pinMode(led,OUTPUT);
-  Wire.begin(8);  //address coressponding to the save
-  Wire.onReceive(recieve_event);
+  Wire.begin(8);  //address coressponding to the slave
 
 }
 
@@ -18,6 +17,7 @@ void recieve_event(int bytes){
 }
 
 void loop() {
+  Wire.onReceive(recieve_event);
   Serial.println(x);
   if(x == '0'){
     digitalWrite(led,LOW);
