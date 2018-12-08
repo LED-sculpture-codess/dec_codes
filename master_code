@@ -1,0 +1,18 @@
+#include <Wire.h>
+
+void setup() {
+  Wire.begin();
+  Serial.begin(9600);
+}
+
+int x = 0;
+
+void loop() {
+
+  Wire.beginTransmission(8);  //begin data transmission to address #1
+  x = Serial.read();
+  Serial.println(x);
+  Wire.write(x);  //send data x to slave
+  Wire.endTransmission();  //end of transmission
+
+}
