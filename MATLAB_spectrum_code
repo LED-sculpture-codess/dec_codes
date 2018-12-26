@@ -58,32 +58,33 @@ for y = 1 : size(hex_data,1)
     end
 end
  for l = 1:1200 
-    for m = 1 : 16
-        fprintf(fid,'%X',hex_data(l));
-        if m < 4
-            fprintf(fid,'%X',bitsll(1,m));
-            fprintf(fid,'%X',0);
-            fprintf(fid,'%X',0);
-            fprintf(fid,'%X',0);
-        elseif  m < 8
-            fprintf(fid,'%X',0);
-            fprintf(fid,'%X',bitsll(1,m-4));
-            fprintf(fid,'%X',0);
-            fprintf(fid,'%X',0);
-        elseif m < 12
-            fprintf(fid,'%X',0);
-            fprintf(fid,'%X',0);
-            fprintf(fid,'%X',bitsll(1,m-8));
-            fprintf(fid,'%X',0);
-        else
-            fprintf(fid,'%X',0);
-            fprintf(fid,'%X',0);
-            fprintf(fid,'%X',0);
-            fprintf(fid,'%X',bitsll(1,m-12));
+    for i = 1 : 20
+        for m = 1 : 16
+            fprintf(fid,'%X',hex_data(l));
+            if m < 4
+                fprintf(fid,'%X',bitsll(1,m));
+                fprintf(fid,'%X',0);
+                fprintf(fid,'%X',0);
+                fprintf(fid,'%X',0);
+            elseif  m < 8
+                fprintf(fid,'%X',0);
+                fprintf(fid,'%X',bitsll(1,m-4));
+                fprintf(fid,'%X',0);
+                fprintf(fid,'%X',0);
+            elseif m < 12
+                fprintf(fid,'%X',0);
+                fprintf(fid,'%X',0);
+                fprintf(fid,'%X',bitsll(1,m-8));
+                fprintf(fid,'%X',0);
+            else
+                fprintf(fid,'%X',0);
+                fprintf(fid,'%X',0);
+                fprintf(fid,'%X',0);
+                fprintf(fid,'%X',bitsll(1,m-12));
+            end
         end
     end
  end
-
 function y = bi2int(x)
     if (length(x) ~= 4)
         error('vector length should be 4')
