@@ -60,7 +60,9 @@ end
  for l = 1:1200 
     for i = 1 : 20
         for m = 1 : 16
-            fprintf(fid,'%X',hex_data(l));
+            for n = 1 : 6
+                fprintf(fid,'%X',hex_data(l));
+            end
             if m < 4
                 fprintf(fid,'%X',bitsll(1,m));
                 fprintf(fid,'%X',0);
